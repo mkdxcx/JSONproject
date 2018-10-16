@@ -14,7 +14,7 @@ public class ConvUser {
         File destinationFile = new File(mainPath.getPath() + fileName);
 
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(destinationFile,user);
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(destinationFile,user);
     }
 
 
