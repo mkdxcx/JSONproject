@@ -1,7 +1,7 @@
 package conversions.convToJSON.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import conversions.filesPath.FilePath;
+import conversions.support.FileOperations;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,12 +10,16 @@ public class ConvUser {
 
     public void convertUserJson(User user, String fileName) throws IOException {
 
-        FilePath mainPath = new FilePath();
-        File destinationFile = new File(mainPath.getPath() + fileName);
+        FileOperations fileSupport = new FileOperations();
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writerWithDefaultPrettyPrinter().writeValue(destinationFile,user);
+        if (!fileSupport.checkIfFileExists(fileName)) {
+            FileOperations mainPath = new FileOperations();
+            File destinationFile = new File(mainPath.getPath() + fileName);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(destinationFile, user);
+        } else {
+            System.out.println("File with given name already exists.");
+        }
     }
-
-
 }
