@@ -1,7 +1,7 @@
 package conversions.convToJSON.point;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import conversions.filesPath.FilePath;
+import conversions.support.FileOperations;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,13 +9,17 @@ import java.io.IOException;
 public class ConvPoint {
 
     public void convertPointToJson(int x, int y, String fileName) throws IOException {
-        Point point = new Point(x, y);
-        FilePath mainPath = new FilePath();
 
-        File destinationFile = new File(mainPath.getPath() + fileName);
+        FileOperations fileSupport = new FileOperations();
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(destinationFile, point);
+        if (!fileSupport.checkIfFileExists(fileName)) {
+            Point point = new Point(x, y);
+            FileOperations mainPath = new FileOperations();
+            File destinationFile = new File(mainPath.getPath() + fileName);
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(destinationFile, point);
+        } else {
+            System.out.println("File with given name already exists.");
+        }
     }
-
 }
