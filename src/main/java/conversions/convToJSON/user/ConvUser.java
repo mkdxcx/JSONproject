@@ -22,4 +22,16 @@ public class ConvUser {
             System.out.println("File with given name already exists.");
         }
     }
+
+    public void addUserToFile(User user, String fileName){
+
+        FileOperations fileSupport = new FileOperations();
+
+        if (fileSupport.checkIfFileExists(fileName)) {
+
+        } else {
+            System.out.println("File with given name doesn't exist.");
+        }
+
+    }
 }
