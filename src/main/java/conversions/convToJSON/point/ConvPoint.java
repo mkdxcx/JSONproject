@@ -3,14 +3,21 @@ package conversions.convToJSON.point;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import conversions.support.FileOperations;
 import conversions.support.Point;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
 
 public class ConvPoint {
 
+    private Logger getNewLogger() {
+        return LogManager.getLogger();
+    }
+
     public void convertPointToJson(int x, int y, String fileName) throws IOException {
 
+        Logger logger = getNewLogger();
         FileOperations fileSupport = new FileOperations();
 
         FileOperations mainPath = new FileOperations();
@@ -21,7 +28,7 @@ public class ConvPoint {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(destinationFile, point);
         } else {
-            System.out.println("File with given name already exists.");
+            logger.info("File with given name already exists.");
         }
     }
 }
