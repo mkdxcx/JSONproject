@@ -12,10 +12,11 @@ public class ConvPoint {
 
         FileOperations fileSupport = new FileOperations();
 
-        if (!fileSupport.checkIfFileExists(fileName)) {
+        FileOperations mainPath = new FileOperations();
+        File destinationFile = new File(mainPath.getPath() + fileName);
+
+        if (!fileSupport.checkIfFileExists(destinationFile)) {
             Point point = new Point(x, y);
-            FileOperations mainPath = new FileOperations();
-            File destinationFile = new File(mainPath.getPath() + fileName);
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(destinationFile, point);
         } else {

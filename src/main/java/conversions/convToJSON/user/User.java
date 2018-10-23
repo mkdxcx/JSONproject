@@ -1,26 +1,26 @@
 package conversions.convToJSON.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
     private String userId;
     private String firstName;
     private String lastName;
     private int age;
     private String country;
-    private String city;
+    private Map<String,String> adress = new HashMap<String, String>();
 
-    public User(String userId, String firstName, String lastName) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public User(String userId, String firstName, String lastName, int age, String country, String city) {
+    public User(String userId, String firstName, String lastName, int age, String country, String city, String postalCode, String street, String number) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.country = country;
-        this.city = city;
+        adress.put("city",city);
+        adress.put("postalCode",postalCode);
+        adress.put("street", street);
+        adress.put("number", number);
     }
 
     public String getUserId() {
@@ -63,11 +63,11 @@ public class User {
         this.country = country;
     }
 
-    public String getCity() {
-        return city;
+    public Map<String, String> getAdress() {
+        return adress;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setAdress(Map<String, String> adress) {
+        this.adress = adress;
     }
 }

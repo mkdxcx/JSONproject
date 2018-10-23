@@ -9,9 +9,13 @@ public class FileOperations {
         return PATH;
     }
 
-    public boolean checkIfFileExists(String fileName) {
-        File file = new File(getPath() + fileName);
-        if (file.exists()) {
+    public void createFile(String fileName){
+        File destinationFile = new File(getPath() + fileName);
+    }
+
+    public boolean checkIfFileExists(File newFile) {
+        //File file = new File(getPath() + fileName);
+        if (newFile.exists()) {
             return true;
         } else {
             return false;
