@@ -31,17 +31,18 @@ public class ConvUser {
         }
     }
 
-    public void converUsersListToJson(List<User> usersList, String fileName)throws IOException{
+    public void convertUsersListToJson(List<User> usersList, String fileName)throws IOException{
 
         Logger logger = getNewLogger();
-        FileOperations fileSupport = new FileOperations();
 
-        FileOperations mainPath = new FileOperations();
-        File destinationFile = new File(mainPath.getPath() + fileName);
+        if(!usersList.isEmpty()){
+            FileOperations mainPath = new FileOperations();
+            File destinationFile = new File(mainPath.getPath() + fileName);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writerWithDefaultPrettyPrinter().writeValue(destinationFile,usersList);
-
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(destinationFile, usersList);
+        }else{
+            logger.info("Conversion failed. List of users is empty.");
+        }
     }
-
 }
