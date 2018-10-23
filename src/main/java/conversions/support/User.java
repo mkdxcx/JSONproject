@@ -1,4 +1,4 @@
-package conversions.convToJSON.user;
+package conversions.support;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +21,9 @@ public class User {
         adress.put("postalCode",postalCode);
         adress.put("street", street);
         adress.put("number", number);
+    }
+
+    public User() {
     }
 
     public String getUserId() {
@@ -69,5 +72,17 @@ public class User {
 
     public void setAdress(Map<String, String> adress) {
         this.adress = adress;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", country='" + country + '\'' +
+                ", adress=" + adress +
+                '}';
     }
 }

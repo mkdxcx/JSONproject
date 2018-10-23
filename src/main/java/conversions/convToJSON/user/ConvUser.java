@@ -2,6 +2,7 @@ package conversions.convToJSON.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import conversions.support.FileOperations;
+import conversions.support.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

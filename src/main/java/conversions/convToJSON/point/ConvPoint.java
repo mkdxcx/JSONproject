@@ -2,6 +2,7 @@ package conversions.convToJSON.point;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import conversions.support.FileOperations;
+import conversions.support.Point;
 
 import java.io.File;
 import java.io.IOException;

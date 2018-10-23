@@ -1,4 +1,4 @@
-package conversions.convToJSON.point;
+package conversions.support;
 
 public class Point {
     private int x;

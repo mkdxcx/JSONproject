@@ -1,7 +1,7 @@
 package run.runConvToJSON;
 
 import conversions.convToJSON.user.ConvUser;
-import conversions.convToJSON.user.User;
+import conversions.support.User;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -29,6 +29,7 @@ public class Main {
         usersList.add(userTest5);
 
         ConvUser convUser = new ConvUser();
-        convUser.convertUsersListToJson(usersList, "usersFromList.json");
+        //convUser.convertUsersListToJson(usersList, "usersFromList.json");
+        convUser.convertSingleUserJson(userTest1,"singleUser.json");
     }
 }
